@@ -10,7 +10,8 @@ def test_fetch():
     assert len(links['assets']) == 1
     assert len(links['links']) > 1
 
+
 def test_fetch_with_invalid_url():
     url = 'foo'
     with pytest.raises(MissingSchema):
-        links = fetch(url)
+        fetch(url)

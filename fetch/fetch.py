@@ -17,5 +17,5 @@ def fetch(url):
     links = get_links(url, content)
     return {
         'assets': assets,
-        'links' : links
+        'links': links
     }

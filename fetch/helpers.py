@@ -18,6 +18,7 @@ def sanitize_link(link, url):
         link = f'http://{parsed_url.hostname}{link}'
     return link
 
+
 def get_assets(url, content):
     """Extracts list of links from webpage source.
 
@@ -32,6 +33,7 @@ def get_assets(url, content):
         link = img.get('src')
         image_links.append(sanitize_link(link, url))
     return image_links
+
 
 def get_links(url, content):
     """Extracts list of assets from webpage source.
