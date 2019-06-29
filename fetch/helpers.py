@@ -7,6 +7,8 @@ def sanitize_link(link, url):
     """Sanitizes the link with adding scheme if not present in the link.
 
     :param link: a hpyerlink
+    :type link: str
+    :param url: a url of the webpage.
     :type url: str
     :returns: sanitezed link
     :rtype: str
@@ -19,34 +21,23 @@ def sanitize_link(link, url):
     return link
 
 
-def get_assets(url, content):
-    """Extracts list of links from webpage source.
-
-    :param content: a source code of webpage.
+def get_links(tag, attribute, url, content):
+    """Get links with specified tag and it's attribute
+    
+    :param tag: a html tag
+    :type tag: str
+    :param attribute: a specified tag's attribute
+    :type attribute: str
+    :param url: a url of the webpage.
     :type url: str
+    :param content: a source code of webpage.
+    :type content: str
     :returns: a list of links.
     :rtype: list
     """
     soup = BeautifulSoup(content, 'html.parser')
-    image_links = []
-    for img in soup.findAll('img'):
-        link = img.get('src')
-        image_links.append(sanitize_link(link, url))
-    return image_links
-
-
-def get_links(url, content):
-    """Extracts list of assets from webpage source.
-
-    :param content: a source code of webpage.
-    :type url: str
-    :returns: a list of assets.
-    :rtype: list
-    """
-    soup = BeautifulSoup(content, 'html.parser')
-    asset_links = []
-    for a in soup.findAll('a'):
-        link = a.get('href')
-        asset_links.append(sanitize_link(link, url))
-
-    return asset_links
+    links = []
+    for link in soup.findAll(tag):
+        link = link.get(attribute)
+        links.append(sanitize_link(link, url))
+    return links

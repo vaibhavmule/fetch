@@ -1,6 +1,6 @@
 import requests
 
-from .helpers import get_assets, get_links
+from .helpers import get_links
 
 
 def fetch(url):
@@ -13,8 +13,8 @@ def fetch(url):
     """
     r = requests.get(url)
     content = r.content
-    assets = get_assets(url, content)
-    links = get_links(url, content)
+    assets = get_links('img', 'src', url, content)
+    links = get_links('a', 'href', url, content)
     return {
         'assets': assets,
         'links': links
