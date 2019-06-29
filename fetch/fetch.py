@@ -1,5 +1,8 @@
 import requests
 
+from helpers import get_assets, get_links
+
+
 def fetch(url):
     """Gets assets and hyperlinks of the webpage.
 
@@ -9,15 +12,15 @@ def fetch(url):
     :rtype: dict
     """
     r = requests.get(url)
-    if r.status_code == 200:
-        print('success', r.content)
-
+    content = r.content
+    assets = get_assets(url, content)
+    links = get_links(url, content)
     return {
-        'assets': [],
-        'links' : []
+        'assets': assets,
+        'links' : links
     }
 
 
 if __name__ == "__main__":
-    url = 'https://www.google.com/'
-    fetch(url)
+    url = 'https://websiteopedia.com/instagram.com'
+    print(fetch(url))
