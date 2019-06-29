@@ -1,11 +1,23 @@
 import requests
 
 def fetch(url):
-    """Gets images links and hyperlinks of specified webpage.
+    """Gets assets and hyperlinks of the webpage.
 
-    :param url: The url of the webpage that needs to scraped.
+    :param url: a url of the webpage that needs to scraped.
     :type url: str
-    :returns: a dict containing list of image links and hyperlinks
+    :returns: a dict containing list of assets and hyperlinks.
     :rtype: dict
     """
-    pass
+    r = requests.get(url)
+    if r.status_code == 200:
+        print('success', r.content)
+
+    return {
+        'assets': [],
+        'links' : []
+    }
+
+
+if __name__ == "__main__":
+    url = 'https://www.google.com/'
+    fetch(url)
