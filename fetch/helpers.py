@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 
 def sanitize_link(link, url):
-    """Sanitizes the link.
+    """Sanitizes the link with adding scheme if not present in the link.
 
     :param link: a hpyerlink
     :type url: str
