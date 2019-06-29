@@ -1,6 +1,6 @@
 import requests
 
-from helpers import get_assets, get_links
+from .helpers import get_assets, get_links
 
 
 def fetch(url):
@@ -19,8 +19,3 @@ def fetch(url):
         'assets': assets,
         'links' : links
     }
-
-
-if __name__ == "__main__":
-    url = 'https://websiteopedia.com/instagram.com'
-    print(fetch(url))
