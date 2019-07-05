@@ -19,3 +19,15 @@ def fetch(url):
         'assets': assets,
         'links': links
     }
+
+
+def crawl_access(url):
+    """Example Payoad: {url1: [asset1, asset2], url2: [asset3], url3: [asset4, asset5]}"""
+    output = {}
+    response = fetch(url)
+    output[url] = response['assets']
+    links = response['links']
+    for link in links:
+        res = crawl_access(link)
+        output.update(res)
+    return output
