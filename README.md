@@ -4,10 +4,10 @@
 
 ## Install
 
-Make you have installed Python 3.6+ and PIP installed.
+Make sure you have installed Python 3.6+ and PIP.
 
 ```sh
-make
+$ make
 ```
 
 ## Usage
@@ -21,5 +21,5 @@ fetch(url)
 ## Run tests
 
 ```sh
-make test
+$ make test
 ```
